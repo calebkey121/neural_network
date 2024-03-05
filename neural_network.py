@@ -1,4 +1,7 @@
-from neuron import Neuron
+try:
+    from .neuron import Neuron  # Relative import for package use
+except ImportError:
+    from neuron import Neuron  # Absolute import as fallback for script use
 import numpy as np
 
 class NeuralNetwork():
