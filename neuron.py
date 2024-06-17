@@ -4,7 +4,7 @@ def logistic_sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 class Neuron:
-    def __init__(self, input_len: int, inputs: list | None = None, activation_name: str = "tanh") -> None:
+    def __init__(self, input_len: int, inputs: list = None, activation_name: str = "tanh") -> None:
         """
         Initializes a Neuron instance with given inputs, optional weights, and an activation function.
 

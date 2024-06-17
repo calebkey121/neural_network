@@ -147,7 +147,10 @@ class NeuralNetwork():
                 self.backward_pass(self.y_train[j])
                 self.update_weights()
                 i += 1
-                print(f"Epoch {epoch + 1} - training loop: {i} / {len(index_list)}")
+                if i % 1000 == 0:
+                    # figure out how many digits is in len(self.x_train)
+                    num_digits = len(str(len(self.x_train)))
+                    print(f"Epoch {epoch + 1:>{num_digits}} - training loop: {i} / {len(index_list)}")
 
             correct_test_results = 0
             i = 0
@@ -156,7 +159,8 @@ class NeuralNetwork():
                 if self.output_layer.argmax() == self.y_test[j].argmax():
                     correct_test_results += 1
                 i += 1
-                print(f"Epoch {epoch + 1} - testing loop: {i} / {len(index_list)}")
+                if i % 1000 == 0:
+                    print(f"Epoch {epoch + 1} - testing loop: {i} / {len(index_list)}")
 
             results.append((correct_training_results, correct_test_results))
         for i, result in enumerate(results):
